@@ -184,7 +184,7 @@ int main() {
       BankState expected_bank_state = bank_state_from_json(state["bank_state"]);
 
       string expected_error = string(state["error"]["tag"]).compare("Some") == 0
-                                  ? state["error"]["value"].dump()
+                                  ? state["error"]["value"].get<std::string>()
                                   : "";
 
       cout << "-------------------- Expected --------------------------------"
