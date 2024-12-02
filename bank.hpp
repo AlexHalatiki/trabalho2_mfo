@@ -25,6 +25,8 @@ string withdraw(BankState &bank_state, string withdrawer, int amount) {
 
 string transfer(BankState &bank_state, string sender, string receiver,
                 int amount) {
+  if (bank_state.balances[sender] < amount)
+    return "Balance is too low";
   bank_state.balances[sender] -= amount;
   bank_state.balances[receiver] += amount;
   return "";
